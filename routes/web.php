@@ -14,11 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index');
+//
+//Route::get('messages', function(){
+//    return view('control-panel.test');
+//});
 
-Auth::routes();
+Route::post('/register-user','AppRegistrationController@register');
 
-Route::get('/home', 'HomeController@index');
 
-Route::get('messages', function(){
-    return view('control-panel.test');
-});
