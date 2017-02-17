@@ -1,0 +1,21 @@
+[17-Feb-2017 15:32:36 Asia/Colombo] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(app/lib/SMSReceiver.php): failed to open stream: No such file or directory' in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php:18
+Stack trace:
+#0 D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php(18): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(ap...', 'D:\\Development\\...', 18, Array)
+#1 D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php(18): require_once()
+#2 D:\Development\sms lagna app- laravel\ideamartSMS\vendor\composer\ClassLoader.php(440): include('D:\\Development\\...')
+#3 D:\Development\sms lagna app- laravel\ideamartSMS\vendor\composer\ClassLoader.php(322): Composer\Autoload\includeFile('D:\\Development\\...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#5 [internal function]: spl_autoload_call('App\\Http\ in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 18
+[17-Feb-2017 15:32:36 Asia/Colombo] PHP Fatal error:  main(): Failed opening required 'app/lib/SMSReceiver.php' (include_path='C:\xampp\php\PEAR') in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 18
+[17-Feb-2017 15:38:25 Asia/Colombo] PHP Warning:  Uncaught exception 'ErrorException' with message 'require_once(app/lib/SMSReceiver.php): failed to open stream: No such file or directory' in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php:18
+Stack trace:
+#0 D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php(18): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require_once(ap...', 'D:\\Development\\...', 18, Array)
+#1 D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php(18): require_once()
+#2 D:\Development\sms lagna app- laravel\ideamartSMS\vendor\composer\ClassLoader.php(440): include('D:\\Development\\...')
+#3 D:\Development\sms lagna app- laravel\ideamartSMS\vendor\composer\ClassLoader.php(322): Composer\Autoload\includeFile('D:\\Development\\...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Http\\Contro...')
+#5 [internal function]: spl_autoload_call('App\\Http\ in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 18
+[17-Feb-2017 15:38:25 Asia/Colombo] PHP Fatal error:  main(): Failed opening required 'app/lib/SMSReceiver.php' (include_path='C:\xampp\php\PEAR') in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 18
+[17-Feb-2017 15:50:47 Asia/Colombo] PHP Fatal error:  Class 'SMSSender' not found in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 33
+[17-Feb-2017 16:28:28 Asia/Colombo] PHP Fatal error:  Call to undefined function App\Http\Controllers\sendServer() in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 59
+[17-Feb-2017 16:29:28 Asia/Colombo] PHP Fatal error:  Call to undefined function App\Http\Controllers\sendServer() in D:\Development\sms lagna app- laravel\ideamartSMS\app\Http\Controllers\AppRegistrationController.php on line 59

@@ -24,5 +24,6 @@ Route::get('/', function () {
 //});
 
 Route::post('/register-user','AppRegistrationController@register');
+Route::post('/lagna-result','AppRegistrationController@category');
 
 
