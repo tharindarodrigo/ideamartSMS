@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//
+
 //Auth::routes();
 //
 //Route::get('/home', 'HomeController@index');
@@ -25,5 +25,10 @@ Route::get('/', function () {
 
 Route::post('/register-user','AppRegistrationController@register');
 Route::post('/lagna-result','AppRegistrationController@category');
+
+Route::resource('messages','MessagesController');
+
+
+
 
 
