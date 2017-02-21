@@ -1,5 +1,4 @@
 <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
         <div class="user-panel">
@@ -32,33 +31,15 @@
 
             <li class="treeview @yield('global')">
                 <a href="{!! route('messages.index') !!}">
-                    <i class="fa fa-circle-o"></i><span>Messages</span>
+                    <i class="fa fa-envelope"></i><span>Messages</span>
                 </a>
             </li>
             <li class="treeview @yield('global')">
-                <a href="">
-                    <i class="fa fa-globe"></i><span>Global Settings</span>
+                <a href="{!! route('subscriptions.index') !!}">
+                    <i class="fa fa-users"></i><span>Subscriptions</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="">
-                        <a href="">
-                            <i class="fa fa-circle-o"></i> <span>Menu Item</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="">
-                            <i class="fa fa-circle-o"></i> <span>Menu Item</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="">
-                            <i class="fa fa-circle-o"></i> <span>Menu Item</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
         </ul>
 
     </section>
-    <!-- /.sidebar -->
 </aside>

@@ -59,7 +59,7 @@ class AppRegistrationController extends Controller
             $subscription->delete();
         }
 
-        return "Null";
+        return null;
 
 
     }
