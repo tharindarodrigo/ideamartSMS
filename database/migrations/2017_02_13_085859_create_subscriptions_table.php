@@ -16,7 +16,7 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('address');
-            $table->integer('ascendant_id')->unsigned();
+            $table->integer('ascendant_id')->unsigned()->nullable();
             $table->string('status');
             $table->timestamps();
 
