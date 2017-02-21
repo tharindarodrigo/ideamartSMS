@@ -32,7 +32,6 @@ class AppRegistrationController extends Controller
 
         dd($body);
 
-
 //        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
 //        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
 
