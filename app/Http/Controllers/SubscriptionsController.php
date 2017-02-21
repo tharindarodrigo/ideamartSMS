@@ -18,9 +18,9 @@ class SubscriptionsController extends Controller
 //        dd($request->all());
     }
 
-    public function index(Subscription $subscription)
+    public function index()
     {
-        return $subscription;
+        return Subscription::all();
     }
 
 
