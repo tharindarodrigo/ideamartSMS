@@ -30,7 +30,7 @@ class AppRegistrationController extends Controller
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
 
-//        dd($body);
+        dd($body);
 
 
 //        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
@@ -50,7 +50,6 @@ class AppRegistrationController extends Controller
         $subscription->status = $status;
 
         if ($status = 'REGISTERED') {
-dd('Hi');
             $subscription->save();
 
             $response = $this->sendServer($status, $subscriberId);
