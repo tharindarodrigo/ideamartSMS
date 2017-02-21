@@ -27,6 +27,8 @@ Route::post('/register-user','AppRegistrationController@register');
 Route::post('/lagna-result','AppRegistrationController@category');
 
 Route::resource('messages','MessagesController');
+Route::get('send-message','MessageSendingController@sendMessage');
+
 
 
 

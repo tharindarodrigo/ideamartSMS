@@ -15,9 +15,12 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('addrsss');
+            $table->string('address');
+            $table->integer('ascendant_id')->unsigned();
             $table->string('status');
             $table->timestamps();
+
+            $table->foreign('ascendant_id')->references('id')->on('ascendants');
         });
     }
 

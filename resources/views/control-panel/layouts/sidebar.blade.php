@@ -31,26 +31,9 @@
             {{--</li>--}}
 
             <li class="treeview @yield('global')">
-                <a href="">
-                    <i class="fa fa-users"></i><span>Users</span>
+                <a href="{!! route('messages') !!}">
+                    <i class="fa fa-circle-o"></i><span>Messages</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="">
-                        <a href="">
-                            <i class="fa fa-circle-o"></i> <span>Menu Item</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="">
-                            <i class="fa fa-circle-o"></i> <span>Menu Item</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="">
-                            <i class="fa fa-circle-o"></i> <span>Menu Item</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="treeview @yield('global')">
                 <a href="">

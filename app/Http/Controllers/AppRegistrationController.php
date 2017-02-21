@@ -20,12 +20,9 @@ define('SERVER_URL', 'https://api.dialog.lk/sms/send');
 //include_once '../../lib/SMSSender.php';
 
 
-
 class AppRegistrationController extends Controller
 {
     //
-
-
 
     public function register(Request $request)
     {
@@ -34,8 +31,8 @@ class AppRegistrationController extends Controller
         $body = $request->all();
 
 
-        file_put_contents('abc.txt',file_get_contents('php://input'),FILE_APPEND);
-        file_put_contents('abc.txt',json_encode($request),FILE_APPEND);
+        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
+        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
 
 
         //$message = $body['message'];
@@ -45,21 +42,19 @@ class AppRegistrationController extends Controller
         $applicationId = $body['applicationId'];
         $status = $body['status'];
 
-
-
         $subscription = new Subscription();
 
-        $subscription->addrsss = 'tel:'.$subscriberId;
+        $subscription->address = 'tel:' . $subscriberId;
         $subscription->status = $status;
 
-        if ($status ='REGISTERED'){
+        if ($status = 'REGISTERED') {
 
             $subscription->save();
 
-            $response = $this->sendServer($status,$subscriberId);
+            $response = $this->sendServer($status, $subscriberId);
         }
 
-        if ($status='UNREGISTERED') {
+        if ($status = 'UNREGISTERED') {
 
             $subscription->delete();
         }
@@ -69,24 +64,24 @@ class AppRegistrationController extends Controller
 
     }
 
-    public function category(Request $request){
-
+    public function category(Request $request)
+    {
 
 
     }
 
-    public function sendServer($message,$subscriberId){
+    public function sendServer($message, $subscriberId)
+    {
 
         //var_dump($address);
         $arrayField = array(
 
-            "destinationAddresses" => ['tell:'.$subscriberId],
+            "destinationAddresses" => ['tell:' . $subscriberId],
             "message" => $message,
             "applicationId" => APP_ID,
             "password" => APP_PASSWORD
 
-        )
-            ;
+        );
 
 
         $jsonObjectFields = json_encode($arrayField);
@@ -99,11 +94,10 @@ class AppRegistrationController extends Controller
         //var_dump($this->sendRequest($jsonObjectFields));
     }
 
-
     private function sendRequest($jsonObjectFields)
     {
         $ch = curl_init('https://api.dialog.lk/sms/send');
-       // $this->log->LogDebug("Request: ".$jsonObjectFields);
+        // $this->log->LogDebug("Request: ".$jsonObjectFields);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -115,6 +109,4 @@ class AppRegistrationController extends Controller
         return $res;
         //var_dump(return $this->handleResponse($res));
     }
-
-
 }
