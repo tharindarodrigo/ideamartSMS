@@ -20,6 +20,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('status');
             $table->timestamps();
 
+
             $table->foreign('ascendant_id')->references('id')->on('ascendants');
         });
     }
