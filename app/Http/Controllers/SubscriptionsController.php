@@ -20,7 +20,8 @@ class SubscriptionsController extends Controller
 
     public function index()
     {
-        return Subscription::all();
+        $subscriptions = Subscription::all();
+        return $subscriptions;
     }
 
 
