@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Subscription;
 use Illuminate\Http\Request;
 
 class SubscriptionsController extends Controller
@@ -14,12 +15,12 @@ class SubscriptionsController extends Controller
 
     public function __construct(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
     }
 
-    public function index()
+    public function index(Subscription $subscription)
     {
-        //
+        return $subscription;
     }
 
 
