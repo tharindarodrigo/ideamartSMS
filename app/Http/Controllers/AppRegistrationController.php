@@ -29,6 +29,7 @@ class AppRegistrationController extends Controller
 
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
+//
 
         dd($body);
 
