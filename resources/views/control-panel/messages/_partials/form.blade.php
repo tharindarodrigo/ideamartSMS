@@ -9,7 +9,7 @@
     <span class="help-block">{{$errors->first('date', ':message')}}</span>
 </div>
 <div class="form-group {{$errors->first('message') ? 'has-error' : ''}}">
-    <label for="email">Address </label>
+    <label for="email">Message </label>
     {!! Form::textarea('message', null,['class'=>'form-control', 'placeholder'=> 'Message', 'rows'=>3]) !!}
     <span class="help-block">{{$errors->first('message', ':message')}}</span>
 </div>
