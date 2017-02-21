@@ -31,7 +31,7 @@
             {{--</li>--}}
 
             <li class="treeview @yield('global')">
-                <a href="{!! route('messages') !!}">
+                <a href="{!! route('messages.index') !!}">
                     <i class="fa fa-circle-o"></i><span>Messages</span>
                 </a>
             </li>
