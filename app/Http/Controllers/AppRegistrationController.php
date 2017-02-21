@@ -50,7 +50,7 @@ class AppRegistrationController extends Controller
         $subscription->status = $status;
 
         if ($status = 'REGISTERED') {
-
+dd('Hi');
             $subscription->save();
 
             $response = $this->sendServer($status, $subscriberId);
