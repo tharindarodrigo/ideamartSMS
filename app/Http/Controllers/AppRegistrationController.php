@@ -50,16 +50,20 @@ class AppRegistrationController extends Controller
         $subscription->status = $status;
 
         if ($status = 'REGISTERED') {
-            $subscription->save();
-            $response = $this->sendServer($status, $subscriberId);
+            if ($subscription->save()) {
+
+                $this->sendServer($status, $subscriberId);
+                return 'True';
+            }
+
         }
 
         if ($status = 'UNREGISTERED') {
 
-            $subscription->delete();
-        }
+            //$subscription->delete();
 
-        return 'Null';
+        }
+        return 'False';
 
 
     }
@@ -76,7 +80,7 @@ class AppRegistrationController extends Controller
         //var_dump($address);
         $arrayField = array(
 
-            "destinationAddresses" => ['tell:' . '94774479260'],
+            "destinationAddresses" => ['tell:94774479260'],
             "message" => $message,
             "applicationId" => APP_ID,
             "password" => APP_PASSWORD
