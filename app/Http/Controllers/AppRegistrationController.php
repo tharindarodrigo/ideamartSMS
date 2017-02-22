@@ -75,6 +75,10 @@ class AppRegistrationController extends Controller
 
     }
 
+    public function jjj (){
+
+    }
+
     public function sendServer($message,$subscriberId){
 
         //var_dump($address);
