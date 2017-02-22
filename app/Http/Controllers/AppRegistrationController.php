@@ -87,7 +87,7 @@ class AppRegistrationController extends Controller
 
         $subscription = Subscription::where('address', $subscriberId)->get();
         $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
-        $msg = 'You have registered for '. Ascendant::find($subscription->ascendant_id )->name;
+        $msg = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
 
         return $this->sendServer($msg, $subscriberId);
 
