@@ -72,7 +72,7 @@ class AppRegistrationController extends Controller
     public function category(Request $request){
 
 
-
+          kkkkkk
     }
 
     public function jjj (){
