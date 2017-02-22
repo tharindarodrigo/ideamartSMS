@@ -34,14 +34,13 @@ class AppRegistrationController extends Controller
         $message = strtolower($body['message']);
         $subscriberId = $body['subscriberId'];
 
-        if (!str_contains($message, 'reg')) {
-
-            $msg = 'Not Valid';
-
-            return $this->sendServer($msg, $subscriberId);
-
-        }
-
+//        if (!str_contains($message, 'reg')) {
+//
+//            $msg = 'Not Valid';
+//
+//            return $this->sendServer($msg, $subscriberId);
+//
+//        }
 
         $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '
