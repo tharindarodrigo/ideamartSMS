@@ -31,26 +31,12 @@ class AppRegistrationController extends Controller
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
 
-        $message = $body['message'];
+        $message = strtolower($body['message']);
         $subscriberId = $body['subscriberId'];
 
-        if (strlen($message) <= 5) {
-//            if(strtolower(substr($message, 0, 1)) == 'it' && ){
-//
-//            }
+        if (str_contains($message, 'reg')) {
 
-            $asc_id = substr($message, 3);
-            if ($asc_id > 0 && $asc_id <= 12) {
-
-                $subscription = Subscription::where('address', $body['address'])->first();
-                $subscription->ascendant_id = $asc_id;
-                $subscription->save();
-
-            } else {
-
-                $msg = 'Not Valid';
-
-            }
+            $msg = 'Not Valid';
 
             return $this->sendServer($msg, $subscriberId);
 
