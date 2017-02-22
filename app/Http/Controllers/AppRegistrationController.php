@@ -35,23 +35,17 @@ class AppRegistrationController extends Controller
 
 //        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
 //        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
-
+        $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
+        $ascendantList = '
+        ';
+        foreach ($ascendants as $ascendant_id => $ascendant) {
+            $ascendantList .= $ascendant_id . '. ' . $ascendant . '
+            ';
+        }
 
         $msg = "Obage lagnaya palapala danaganimata lagnayata adala ankaya athulu karanna
-        Eg - IT(space) 4 send to 77100 for kataka lagna
-        1. Mesha
-        2. Wrushaba
-        3. Mithuna
-        4. Kataka
-        5. Singhe
-        6. Kanya
-        7. Thula
-        8. Wruchchika
-        9. Dhanu
-        10. MAkara
-        11. Kumba
-        12. Meena
-        ";
+        Eg - IT(space) 4 send to 77100 for kataka lagna".
+        $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];
         $subscriberId = $body['subscriberId'];
