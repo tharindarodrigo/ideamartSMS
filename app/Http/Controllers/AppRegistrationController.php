@@ -88,6 +88,7 @@ class AppRegistrationController extends Controller
         );
 
 
+
         $jsonObjectFields = json_encode($arrayField);
         return $this->sendRequest($jsonObjectFields);
 
