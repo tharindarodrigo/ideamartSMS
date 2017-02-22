@@ -94,10 +94,10 @@ class AppRegistrationController extends Controller
         $split = explode(' ', $msg);
 
         if ($split[1] > 0 && $split[1] <= 12) {
-            $subscription = Subscription::where('address', $sourceAddress)->first();
-            $subscription->ascendant_id = $split[1];
+//            $subscription = Subscription::where('address', $sourceAddress)->first();
+//            $subscription->ascendant_id = $split[1];
             $res = 'You have registered for '. Ascendant::findOrFail($split[1])->name;
-            $subscription->save();
+//            $subscription->save();
         } else {
             $res = 'Invalid Response';
         }
