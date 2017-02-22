@@ -52,8 +52,8 @@ class AppRegistrationController extends Controller
         if ($status = 'REGISTERED') {
             if ($subscription->save()) {
 
-                $this->sendServer($status, $subscriberId);
-                return 'True';
+                return $this->sendServer($status, $subscriberId);
+//                return 'True';
             }
 
         }
@@ -80,7 +80,7 @@ class AppRegistrationController extends Controller
         //var_dump($address);
         $arrayField = array(
 
-            "destinationAddresses" => ['tel:94774479260'],
+            "destinationAddresses" => ['tel:'.$subscriberId],
             "message" => $message,
             "applicationId" => APP_ID,
             "password" => APP_PASSWORD
