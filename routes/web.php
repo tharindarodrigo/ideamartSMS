@@ -23,9 +23,9 @@ Route::get('/', function () {
 //    return view('control-panel.test');
 //});
 
-Route::post('/set-ascendant','AppRegistrationController@register');
+Route::post('/register-user','AppRegistrationController@register');
 Route::post('/lagna-result','AppRegistrationController@category');
-//Route::post('/set-ascendant','AppRegistrationController@setAscendant');
+Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
 Route::resource('messages','MessagesController');
 Route::resource('subscriptions','SubscriptionsController');
