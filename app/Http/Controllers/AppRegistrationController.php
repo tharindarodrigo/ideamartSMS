@@ -85,7 +85,7 @@ class AppRegistrationController extends Controller
     {
         $body = $request->all();
 
-         return $sourceAddress = $body['sourceAddress'];
+        $sourceAddress = $body['sourceAddress'];
         $msg = $body['message'];
 
         $msg = str_replace(",", "", $msg);
@@ -98,7 +98,6 @@ class AppRegistrationController extends Controller
         } else {
             $pro = 'Invalid Response';
         }
-
 
 //        $subscription = Subscription::where('address', $subscriberId)->first();
 //        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
