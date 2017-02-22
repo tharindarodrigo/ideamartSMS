@@ -30,12 +30,6 @@ class AppRegistrationController extends Controller
 
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
-//
-
-//        dd($body);
-
-//        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
-//        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
 
         $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '
@@ -71,13 +65,36 @@ class AppRegistrationController extends Controller
 
         if ($status = 'UNREGISTERED') {
 
-            //$subscription->delete();
+            $record = Subscription::where('address', 'tel:' . $subscriberId)->first();
+            $record->delete();
 
         }
 
         return 'False';
 
 
+    }
+
+    public function setAscendant(Request $request)
+    {
+        $body = $request->all();
+        $messageBody = explode(' ', $body['message']);
+
+        if (count($messageBody) == 2) {
+            if (strtolower($messageBody[0]) == 'it' && ($messageBody[1] <= 12 && $messageBody[1] >= 1)) {
+                $subscription = Subscription::where('address', $body['address'])->first();
+                $subscription->ascendant_id = $messageBody[1];
+                $subscription->save();
+
+                return $subscription;
+
+            } else {
+                return 'Invalid Message';
+            }
+
+        } else {
+            return 'Invalid Message';
+        }
     }
 
     public function category(Request $request)
