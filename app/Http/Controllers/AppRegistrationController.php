@@ -91,7 +91,7 @@ class AppRegistrationController extends Controller
 //        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
 //        $msg = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
 
-        $msg = 'Heello';
+        $msg = 'Hello';
 
         return $this->sendServer($msg, $subscriberId);
     }
