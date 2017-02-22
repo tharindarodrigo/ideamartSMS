@@ -33,7 +33,7 @@ class SubscriptionsController extends Controller
 
     public function store(Request $request)
     {
-        //
+
     }
 
 
