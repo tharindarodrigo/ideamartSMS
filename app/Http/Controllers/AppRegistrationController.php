@@ -62,7 +62,7 @@ class AppRegistrationController extends Controller
         if ($status = 'REGISTERED') {
             if ($subscription->save()) {
 
-                return $this->sendServer($msg, $subscriberId);
+                return $this->sendServer($msg,'tel:'.$subscriberId);
 //                return 'True';
             }
 
@@ -85,15 +85,22 @@ class AppRegistrationController extends Controller
     {
         $body = $request->all();
 
-        $subscriberId = $body['subscriberId'];
+        $sourceAddress = $body['sourceAddress'];
+        $msg= $body['message'];
+
+        $msg = str_replace(",","",$msg);
+
+        $msg = strtolower($msg);
+        $split = explode(' ', $msg);
+        $pro = $split[1];
+
 
 //        $subscription = Subscription::where('address', $subscriberId)->first();
 //        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
 //        $msg = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
 
-        $msg = 'Hello';
 
-        return $this->sendServer($msg, $subscriberId);
+        return $this->sendServer($pro, $sourceAddress);
     }
 
     public function category(Request $request)
@@ -108,7 +115,7 @@ class AppRegistrationController extends Controller
         //var_dump($address);
         $arrayField = array(
 
-            "destinationAddresses" => ['tel:'.$subscriberId],
+            "destinationAddresses" => [$subscriberId],
             "message" => $message,
             "applicationId" => APP_ID,
             "password" => APP_PASSWORD
