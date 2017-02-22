@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use App\Subscription;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class SubscriptionsController extends Controller
 
     public function create()
     {
-        //
+        $messages = Message::with()->where('date', date('Y-m-d'))->get();
     }
 
 

@@ -45,8 +45,8 @@ class AppRegistrationController extends Controller
         }
 
         $msg = "Obage lagnaya palapala danaganimata lagnayata adala ankaya athulu karanna
-        Eg - IT(space) 4 send to 77100 for kataka lagna".
-        $ascendantList;
+        Eg - IT(space) 4 send to 77100 for kataka lagna" .
+            $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];
         $subscriberId = $body['subscriberId'];
@@ -62,7 +62,7 @@ class AppRegistrationController extends Controller
         if ($status = 'REGISTERED') {
             if ($subscription->save()) {
 
-                return $this->sendServer($msg,'tel:'.$subscriberId);
+                return $this->sendServer($msg, 'tel:' . $subscriberId);
 //                return 'True';
             }
 
@@ -85,14 +85,19 @@ class AppRegistrationController extends Controller
     {
         $body = $request->all();
 
-        $sourceAddress = $body['sourceAddress'];
-        $msg= $body['message'];
+         return $sourceAddress = $body['sourceAddress'];
+        $msg = $body['message'];
 
-        $msg = str_replace(",","",$msg);
+        $msg = str_replace(",", "", $msg);
 
         $msg = strtolower($msg);
         $split = explode(' ', $msg);
-        $pro = $split[1];
+
+        if (is_integer($split[1]) && $split[1] > 0 && $split[1] <= 12) {
+            $pro = $split[1];
+        } else {
+            $pro = 'Invalid Response';
+        }
 
 
 //        $subscription = Subscription::where('address', $subscriberId)->first();
