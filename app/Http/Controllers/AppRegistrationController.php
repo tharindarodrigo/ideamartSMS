@@ -79,6 +79,20 @@ class AppRegistrationController extends Controller
 
     }
 
+    public function setAscendant(Request $request)
+    {
+        $body = $request->all();
+
+        $subscriberId = $body['subscriberId'];
+
+        $subscription = Subscription::where('address', $subscriberId)->get();
+        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
+        $msg = 'You have registered for '. Ascendant::find($subscription->ascendant_id )->name;
+
+        return $this->sendServer($msg, $subscriberId);
+
+    }
+
     public function category(Request $request)
     {
 
