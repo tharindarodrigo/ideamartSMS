@@ -30,17 +30,12 @@ class AppRegistrationController extends Controller
 
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
+//
 
-        $message = strtolower($body['message']);
-        $subscriberId = $body['subscriberId'];
+//        dd($body);
 
-//        if (!str_contains($message, 'reg')) {
-//
-//            $msg = 'Not Valid';
-//
-//            return $this->sendServer($msg, $subscriberId);
-//
-//        }
+//        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
+//        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
 
         $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '
@@ -53,7 +48,9 @@ class AppRegistrationController extends Controller
         $msg = 'Obage lagna palapala danaganimata lagnayata adala ankaya athulu karanna
         Eg - IT(space) 4 send to 77100 for kataka lagna' .
             $ascendantList;
+        //$message = $body['message'];
         $version = $body['version'];
+        $subscriberId = $body['subscriberId'];
         //$statusCode = $body['statusCode'];
         $applicationId = $body['applicationId'];
         $status = $body['status'];
@@ -74,36 +71,13 @@ class AppRegistrationController extends Controller
 
         if ($status = 'UNREGISTERED') {
 
-            $record = Subscription::where('address', 'tel:' . $subscriberId)->first();
-            $record->delete();
+            //$subscription->delete();
 
         }
 
         return 'False';
 
 
-    }
-
-    public function setAscendant(Request $request)
-    {
-        $body = $request->all();
-        $messageBody = explode(' ', $body['message']);
-
-        if (count($messageBody) == 2) {
-            if (strtolower($messageBody[0]) == 'it' && ($messageBody[1] <= 12 && $messageBody[1] >= 1)) {
-                $subscription = Subscription::where('address', $body['address'])->first();
-                $subscription->ascendant_id = $messageBody[1];
-                $subscription->save();
-
-                return $subscription;
-
-            } else {
-                return 'Invalid Message';
-            }
-
-        } else {
-            return 'Invalid Message';
-        }
     }
 
     public function category(Request $request)
