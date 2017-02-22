@@ -101,7 +101,7 @@ class AppRegistrationController extends Controller
         } else {
             $res = 'Invalid Response';
         }
-//
+
 //        $subscription = Subscription::where('address', $sourceAddress)->first();
 //        $subscription->ascendant_id = $split[1];
 //        $res = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
