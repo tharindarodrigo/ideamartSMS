@@ -93,18 +93,20 @@ class AppRegistrationController extends Controller
         $msg = strtolower($msg);
         $split = explode(' ', $msg);
 
-        if (is_integer($split[1]) && $split[1] > 0 && $split[1] <= 12) {
-            $pro = $split[1];
+        if ($split[0] == 'it' && is_integer($split[1]) && $split[1] > 0 && $split[1] <= 12) {
+            $subscription = Subscription::where('address', $sourceAddress)->first();
+            $subscription->ascendant_id = $split[1];
+            $res = 'You have registered for '. Ascendant::findOrFail($split[1])->name;
+            $subscription->save();
         } else {
-            $pro = 'Invalid Response';
+            $res = 'Invalid Response';
         }
+//
+//        $subscription = Subscription::where('address', $sourceAddress)->first();
+//        $subscription->ascendant_id = $split[1];
+//        $res = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
 
-//        $subscription = Subscription::where('address', $subscriberId)->first();
-//        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
-//        $msg = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
-
-
-        return $this->sendServer($pro, $sourceAddress);
+        return $this->sendServer($res, $sourceAddress);
     }
 
     public function category(Request $request)
