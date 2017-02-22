@@ -37,7 +37,7 @@ class AppRegistrationController extends Controller
 //        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
 //        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
 
-        $ascendants = Ascendant::orderBy('id')->pluck(['name', 'id']);
+        $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '';
         foreach ($ascendants as $ascendant_id => $ascendant){
             $ascendantList.=$ascendant_id.'. '.$ascendant.'
@@ -46,7 +46,7 @@ class AppRegistrationController extends Controller
 
         $msg = 'Obage lagna palapala danaganimata lagnayata adala ankaya athulu karanna
         Eg - IT(space) 4 send to 77100 for kataka lagna'.
-        $ascendantList
+        '$ascendantList'
         ;
         //$message = $body['message'];
         $version = $body['version'];
