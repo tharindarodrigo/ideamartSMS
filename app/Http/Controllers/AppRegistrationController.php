@@ -31,6 +31,32 @@ class AppRegistrationController extends Controller
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
 
+        $message = $body['message'];
+        $subscriberId = $body['subscriberId'];
+
+        if (strlen($message) <= 5) {
+//            if(strtolower(substr($message, 0, 1)) == 'it' && ){
+//
+//            }
+
+            $asc_id = substr($message, 3);
+            if ($asc_id > 0 && $asc_id <= 12) {
+
+                $subscription = Subscription::where('address', $body['address'])->first();
+                $subscription->ascendant_id = $asc_id;
+                $subscription->save();
+
+            } else {
+
+                $msg = 'Not Valid';
+
+            }
+
+            return $this->sendServer($msg, $subscriberId);
+
+        }
+
+
         $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '
         ';
@@ -42,9 +68,7 @@ class AppRegistrationController extends Controller
         $msg = 'Obage lagna palapala danaganimata lagnayata adala ankaya athulu karanna
         Eg - IT(space) 4 send to 77100 for kataka lagna' .
             $ascendantList;
-        //$message = $body['message'];
         $version = $body['version'];
-        $subscriberId = $body['subscriberId'];
         //$statusCode = $body['statusCode'];
         $applicationId = $body['applicationId'];
         $status = $body['status'];
