@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ascendant;
 use App\Subscription;
 use Illuminate\Http\Request;
 
