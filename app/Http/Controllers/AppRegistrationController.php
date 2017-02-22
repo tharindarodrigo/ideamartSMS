@@ -40,15 +40,14 @@ class AppRegistrationController extends Controller
         $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '
         ';
-        foreach ($ascendants as $ascendant_id => $ascendant){
-            $ascendantList.=$ascendant_id.'. '.$ascendant.'
+        foreach ($ascendants as $ascendant_id => $ascendant) {
+            $ascendantList .= $ascendant_id . '. ' . $ascendant . '
             ';
         }
 
         $msg = 'Obage lagna palapala danaganimata lagnayata adala ankaya athulu karanna
-        Eg - IT(space) 4 send to 77100 for kataka lagna'.
-        $ascendantList
-        ;
+        Eg - IT(space) 4 send to 77100 for kataka lagna' .
+            $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];
         $subscriberId = $body['subscriberId'];
@@ -93,7 +92,7 @@ class AppRegistrationController extends Controller
         //var_dump($address);
         $arrayField = array(
 
-            "destinationAddresses" => ['tel:'.$subscriberId],
+            "destinationAddresses" => ['tel:' . $subscriberId],
             "message" => $message,
             "applicationId" => APP_ID,
             "password" => APP_PASSWORD
