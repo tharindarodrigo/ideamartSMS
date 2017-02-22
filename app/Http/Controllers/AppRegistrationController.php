@@ -71,6 +71,8 @@ class AppRegistrationController extends Controller
         if ($status = 'UNREGISTERED') {
 
             //$subscription->delete();
+            $subscription = Subscription::where('address', $subscriberId)->first();
+            $subscription->delete();
 
         }
 
@@ -85,12 +87,13 @@ class AppRegistrationController extends Controller
 
         $subscriberId = $body['subscriberId'];
 
-        $subscription = Subscription::where('address', $subscriberId)->get();
-        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
-        $msg = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
+//        $subscription = Subscription::where('address', $subscriberId)->first();
+//        $subscription->ascendant_id = substr($body['message'], 3, strlen($body['msg']));
+//        $msg = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
+
+        $msg = 'Heello';
 
         return $this->sendServer($msg, $subscriberId);
-
     }
 
     public function category(Request $request)
