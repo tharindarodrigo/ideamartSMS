@@ -45,7 +45,8 @@ class AppRegistrationController extends Controller
         }
 
         $msg = 'Obage lagna palapala danaganimata lagnayata adala ankaya athulu karanna
-        Eg - IT(space) 4 send to 77100 for kataka lagna'.
+        Eg - IT(space) 4 send to 77100 for kataka lagna
+        '.
         $ascendantList
         ;
         //$message = $body['message'];
