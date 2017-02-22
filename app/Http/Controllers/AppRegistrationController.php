@@ -93,7 +93,7 @@ class AppRegistrationController extends Controller
         $msg = strtolower($msg);
         $split = explode(' ', $msg);
 
-        if ($split[1] > 0 && $split[1] <= 12) {
+        if (is_integer($split[1]) && $split[1] > 0 && $split[1] <= 12) {
             $pro = $split[1];
         } else {
             $pro = 'Invalid Response';
