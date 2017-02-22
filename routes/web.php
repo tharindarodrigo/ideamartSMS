@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::post('/register-user','AppRegistrationController@register');
 Route::post('/lagna-result','AppRegistrationController@category');
-//Route::post('/set-ascendant','AppRegistrationController@setAscendant');
+Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
 Route::resource('messages','MessagesController');
 Route::resource('subscriptions','SubscriptionsController');
