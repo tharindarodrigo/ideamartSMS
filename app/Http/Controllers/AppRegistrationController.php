@@ -37,6 +37,21 @@ class AppRegistrationController extends Controller
 //        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
 
 
+        $msg = "Obage lagnaya palapala danaganimata lagnayata adala ankaya athulu karanna
+        Eg - IT(space) 4 send to 77100 for kataka lagna
+        1. Mesha
+        2. Wrushaba
+        3. Mithuna
+        4. Kataka
+        5. Singhe
+        6. Kanya
+        7. Thula
+        8. Wruchchika
+        9. Dhanu
+        10. MAkara
+        11. Kumba
+        12. Meena
+        ";
         //$message = $body['message'];
         $version = $body['version'];
         $subscriberId = $body['subscriberId'];
@@ -52,7 +67,7 @@ class AppRegistrationController extends Controller
         if ($status = 'REGISTERED') {
             if ($subscription->save()) {
 
-                return $this->sendServer($status, $subscriberId);
+                return $this->sendServer($msg, $subscriberId);
 //                return 'True';
             }
 
