@@ -29,7 +29,7 @@ Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
 Route::resource('messages','MessagesController');
 Route::resource('subscriptions','SubscriptionsController');
-Route::get('send-message','MessageSendingController@sendMessage');
+Route::get('send-message','MessageSendingController@sendMessages');
 
 
 
