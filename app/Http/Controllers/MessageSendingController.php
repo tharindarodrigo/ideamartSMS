@@ -24,17 +24,23 @@ class MessageSendingController extends Controller
     public function sendMessages()
     {
         $ascendants = Ascendant::all();
-        foreach ($ascendants as $ascendant){
+        foreach ($ascendants as $ascendant) {
 
             $message = Message::where('ascendant_id', $ascendant->id)
-                ->where('date', date('Y-m-d'))->first()->message;
-            $subscribers = Subscription::where('ascendant_id', $ascendant->id)
-                ->where('status', 'SUBSCRIBED')
-                ->get();
+                ->where('date', date('Y-m-d'))->first();
 
-            foreach ($subscribers as $subscriber){
-                $this->sendServer($message, $subscriber->address);
+            if (count($message)) {
+                $subscribers = Subscription::where('ascendant_id', $ascendant->id)
+                    ->where('status', 'SUBSCRIBED')
+                    ->get();
+
+                if (count($subscribers)) {
+                    foreach ($subscribers as $subscriber) {
+                        $this->sendServer($message, $subscriber->address);
+                    }
+                }
             }
+
         }
     }
 
@@ -50,7 +56,6 @@ class MessageSendingController extends Controller
             "password" => APP_PASSWORD
 
         );
-
 
 
         $jsonObjectFields = json_encode($arrayField);
