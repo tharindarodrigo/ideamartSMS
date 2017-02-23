@@ -33,7 +33,7 @@ class MessageSendingController extends Controller
                 ->where('date', date('Y-m-d'))->first();
 //dd($message);
             if (count($message)) {
-                print_r($message->message);
+                dd($message->message);
 
                 $subscribers = Subscription::where('ascendant_id', $ascendant->id)
                     ->where('status', 'SUBSCRIBED')
