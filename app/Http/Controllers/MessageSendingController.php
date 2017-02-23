@@ -28,7 +28,9 @@ class MessageSendingController extends Controller
 
             $message = Message::where('ascendant_id', $ascendant->id)
                 ->where('date', date('Y-m-d'))->first()->message;
-            $subscribers = Subscription::where('ascendant_id', $ascendant->id)->get();
+            $subscribers = Subscription::where('ascendant_id', $ascendant->id)
+                ->where('status', 'SUBSCRIBED')
+                ->get();
 
             foreach ($subscribers as $subscriber){
                 $this->sendServer($message, $subscriber->address);

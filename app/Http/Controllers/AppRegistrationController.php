@@ -65,8 +65,8 @@ class AppRegistrationController extends Controller
         if ($status = 'UNREGISTERED') {
 
             //$subscription->delete();
-            $subscription = Subscription::where('address', $subscriberId)->first();
-            $subscription->delete();
+            $subs = Subscription::where('address', 'tel:' . $subscriberId)->first();
+            $subs->delete();
 
         }
 
