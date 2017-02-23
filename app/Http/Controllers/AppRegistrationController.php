@@ -23,19 +23,13 @@ define('SERVER_URL', 'https://api.dialog.lk/sms/send');
 
 class AppRegistrationController extends Controller
 {
-    //
 
     public function register(Request $request)
     {
 
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
-//
 
-//        dd($body);
-
-//        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
-//        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
         $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
         $ascendantList = '
         ';

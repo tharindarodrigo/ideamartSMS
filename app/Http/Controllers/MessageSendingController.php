@@ -55,9 +55,9 @@ class MessageSendingController extends Controller
         return $this->sendRequest($jsonObjectFields);
 
 
-        $data = json_decode(file_get_contents('php://input'), true);
-
-        $name = $data["longitude"];
+//        $data = json_decode(file_get_contents('php://input'), true);
+//
+//        $name = $data["longitude"];
         //var_dump($this->sendRequest($jsonObjectFields));
     }
 
