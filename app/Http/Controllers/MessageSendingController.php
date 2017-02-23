@@ -24,12 +24,17 @@ class MessageSendingController extends Controller
     public function sendMessages()
     {
         $ascendants = Ascendant::all();
+
+//        dd($ascendants);
+
         foreach ($ascendants as $ascendant) {
 
             $message = Message::where('ascendant_id', $ascendant->id)
                 ->where('date', date('Y-m-d'))->first();
-
+//dd($message);
             if (count($message)) {
+                print_r($message);
+
                 $subscribers = Subscription::where('ascendant_id', $ascendant->id)
                     ->where('status', 'SUBSCRIBED')
                     ->get();
