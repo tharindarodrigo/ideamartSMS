@@ -65,7 +65,8 @@ class AppRegistrationController extends Controller
 
             //$subscription->delete();
             $subs = Subscription::where('address', 'tel:' . $subscriberId)->first();
-            $subs->delete();
+            $subs->status = $status;
+            $subs->save();
 
         }
 
