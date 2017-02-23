@@ -23,7 +23,7 @@ class MessagesController extends Controller
     public function index()
     {
 //        dd('Hi');
-        $messages = Message::all();
+        $messages = Message::where('date','>=', date('Y-m-d'))->get();
         return view($this->view . 'index', compact('messages'));
     }
 

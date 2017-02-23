@@ -21,9 +21,6 @@
                     <a class="btn btn-flat btn-sm btn-primary"
                        href="{{route('messages.edit',[$message->id])}}"><span
                                 class="fa fa-edit"></span></a>
-                    <a class="btn btn-flat btn-sm btn-default"
-                       href="{{route('messages.show',[$message->id])}}"><span
-                                class="fa fa-eye"></span></a>
                     <button type="button" data-toggle="modal" data-target="#myModal"
                             class="btn btn-sm btn-danger btn-icon" onSubmit=""><span class=" fa fa-trash"></span>
 

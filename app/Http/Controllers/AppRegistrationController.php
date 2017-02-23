@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ascendant;
 use App\Subscription;
 use Illuminate\Http\Request;
 
@@ -20,24 +21,32 @@ define('SERVER_URL', 'https://api.dialog.lk/sms/send');
 //include_once '../../lib/SMSSender.php';
 
 
-
 class AppRegistrationController extends Controller
 {
     //
-
-
 
     public function register(Request $request)
     {
 
         //$sender = new SMSSender(SERVER_URL, APP_ID, APP_PASSWORD);
         $body = $request->all();
+//
 
+//        dd($body);
 
-        file_put_contents('abc.txt',file_get_contents('php://input'),FILE_APPEND);
-        file_put_contents('abc.txt',json_encode($request),FILE_APPEND);
+//        file_put_contents('abc.txt', file_get_contents('php://input'), FILE_APPEND);
+//        file_put_contents('abc.txt', json_encode($request), FILE_APPEND);
+        $ascendants = Ascendant::orderBy('id')->pluck('name', 'id');
+        $ascendantList = '
+        ';
+        foreach ($ascendants as $ascendant_id => $ascendant) {
+            $ascendantList .= $ascendant_id . '. ' . $ascendant . '
+            ';
+        }
 
-
+        $msg = "Obage lagnaya palapala danaganimata lagnayata adala ankaya athulu karanna
+        Eg - IT(space) 4 send to 77100 for kataka lagna" .
+            $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];
         $subscriberId = $body['subscriberId'];
@@ -45,52 +54,79 @@ class AppRegistrationController extends Controller
         $applicationId = $body['applicationId'];
         $status = $body['status'];
 
-
-
         $subscription = new Subscription();
 
-        $subscription->addrsss = 'tel:'.$subscriberId;
+        $subscription->address = 'tel:' . $subscriberId;
         $subscription->status = $status;
 
-        if ($status ='REGISTERED'){
+        if ($status = 'REGISTERED') {
+            if ($subscription->save()) {
 
-            $subscription->save();
+                return $this->sendServer($msg, 'tel:' . $subscriberId);
+//                return 'True';
+            }
 
-            $response = $this->sendServer($status,$subscriberId);
         }
 
-        if ($status='UNREGISTERED') {
+        if ($status = 'UNREGISTERED') {
 
+            //$subscription->delete();
+            $subscription = Subscription::where('address', $subscriberId)->first();
             $subscription->delete();
+
         }
 
-        return "Null";
+        return 'False';
 
 
     }
 
-    public function category(Request $request){
+    public function setAscendant(Request $request)
+    {
+        $body = $request->all();
 
+        $sourceAddress = $body['sourceAddress'];
+        $msg = $body['message'];
 
-          kkkkkk
+        $msg = str_replace(",", "", $msg);
+
+        $msg = strtolower($msg);
+        $split = explode(' ', $msg);
+
+        if ($split[1] > 0 && $split[1] <= 12) {
+            $subscription = Subscription::where('address', $sourceAddress)->first();
+            $subscription->ascendant_id = $split[1];
+            $res = 'You have registered for '. Ascendant::findOrFail($split[1])->name;
+            $subscription->save();
+        } else {
+            $res = 'Invalid Response';
+        }
+
+//        $subscription = Subscription::where('address', $sourceAddress)->first();
+//        $subscription->ascendant_id = $split[1];
+//        $res = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
+
+        return $this->sendServer($res, $sourceAddress);
     }
 
-    public function jjj (){
+    public function category(Request $request)
+    {
+
 
     }
 
-    public function sendServer($message,$subscriberId){
+    public function sendServer($message, $subscriberId)
+    {
 
         //var_dump($address);
         $arrayField = array(
 
-            "destinationAddresses" => ['tell:'.$subscriberId],
+            "destinationAddresses" => [$subscriberId],
             "message" => $message,
             "applicationId" => APP_ID,
             "password" => APP_PASSWORD
 
-        )
-            ;
+        );
 
 
         $jsonObjectFields = json_encode($arrayField);
@@ -103,11 +139,10 @@ class AppRegistrationController extends Controller
         //var_dump($this->sendRequest($jsonObjectFields));
     }
 
-
     private function sendRequest($jsonObjectFields)
     {
         $ch = curl_init('https://api.dialog.lk/sms/send');
-       // $this->log->LogDebug("Request: ".$jsonObjectFields);
+        // $this->log->LogDebug("Request: ".$jsonObjectFields);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
@@ -119,6 +154,4 @@ class AppRegistrationController extends Controller
         return $res;
         //var_dump(return $this->handleResponse($res));
     }
-
-
 }
