@@ -6,8 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ascendant extends Model
 {
-    public function subsc()
-    {
-        
-    }
+
 }
