@@ -48,29 +48,21 @@ class AppRegistrationController extends Controller
         $applicationId = $body['applicationId'];
         $status = $body['status'];
 
-        $subscription = new Subscription();
+        $subs = Subscription::where('address', 'tel:' . $subscriberId)->first();
 
-        $subscription->address = 'tel:' . $subscriberId;
-        $subscription->status = $status;
-
-        if ($status == 'REGISTERED') {
-            if ($subscription->save()) {
-
-                return $this->sendServer($msg, 'tel:' . $subscriberId);
-            }
-
-        }
-
-        if ($status == 'UNREGISTERED') {
-
-            //$subscription->delete();
-            $subs = Subscription::where('address', 'tel:' . $subscriberId)->first();
+        if (count($subs)) {
             $subs->status = $status;
             $subs->save();
 
+        } else {
+
+            $subscription = new Subscription();
+            $subscription->address = 'tel:' . $subscriberId;
+            $subscription->status = $status;
+            $subscription->save();
         }
 
-        return 'False';
+        return $this->sendServer($msg, 'tel:' . $subscriberId);
 
 
     }
@@ -91,7 +83,7 @@ class AppRegistrationController extends Controller
             $subscription = Subscription::where('address', $sourceAddress)->first();
             $subscription->ascendant_id = $split[1];
             $subscription->save();
-            $res = 'You have registered for '. Ascendant::findOrFail($split[1])->name;
+            $res = 'You have registered for ' . Ascendant::findOrFail($split[1])->name;
         } else {
             $res = 'Invalid Response';
         }
