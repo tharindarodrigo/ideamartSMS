@@ -7,6 +7,18 @@ use App\Message;
 use App\Subscription;
 use Illuminate\Http\Request;
 
+
+date_default_timezone_set('Asia/Colombo');
+//ini_set('display_errors', 1);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('error_log', 'sms.log');
+
+define('APP_ID', 'APP_033669');
+define('APP_PASSWORD', '4b4aad35a36ebb34b8ce6f6a2409d70d');
+define('SERVER_URL', 'https://api.dialog.lk/sms/send');
+
 class MessageSendingController extends Controller
 {
     public function sendMessages()
