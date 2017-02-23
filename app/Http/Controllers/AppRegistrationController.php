@@ -53,7 +53,7 @@ class AppRegistrationController extends Controller
         $subscription->address = 'tel:' . $subscriberId;
         $subscription->status = $status;
 
-        if ($status = 'REGISTERED') {
+        if ($status == 'REGISTERED') {
             if ($subscription->save()) {
 
                 return $this->sendServer($msg, 'tel:' . $subscriberId);
@@ -61,7 +61,7 @@ class AppRegistrationController extends Controller
 
         }
 
-        if ($status = 'UNREGISTERED') {
+        if ($status == 'UNREGISTERED') {
 
             //$subscription->delete();
             $subs = Subscription::where('address', 'tel:' . $subscriberId)->first();
