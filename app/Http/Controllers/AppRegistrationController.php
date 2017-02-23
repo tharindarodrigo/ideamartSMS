@@ -57,7 +57,6 @@ class AppRegistrationController extends Controller
             if ($subscription->save()) {
 
                 return $this->sendServer($msg, 'tel:' . $subscriberId);
-//                return 'True';
             }
 
         }
