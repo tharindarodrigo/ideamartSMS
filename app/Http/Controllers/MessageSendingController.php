@@ -35,8 +35,10 @@ class MessageSendingController extends Controller
                     ->get();
 
                 if (count($subscribers)) {
+//                    $count=0;
                     foreach ($subscribers as $subscriber) {
                         $this->sendServer($message, $subscriber->address);
+//                        $count++;
                     }
                 }
             }
