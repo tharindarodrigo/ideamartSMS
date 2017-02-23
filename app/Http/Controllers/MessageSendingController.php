@@ -31,12 +31,10 @@ class MessageSendingController extends Controller
 
             $message = Message::where('ascendant_id', $ascendant->id)
                 ->where('date', date('Y-m-d'))->first();
-//dd($message);
             if (count($message)) {
-                dd($message->message);
 
                 $subscribers = Subscription::where('ascendant_id', $ascendant->id)
-                    ->where('status', 'SUBSCRIBED')
+                    ->where('status', 'REGISTERED')
                     ->get();
 
                 if (count($subscribers)) {
