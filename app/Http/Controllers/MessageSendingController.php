@@ -25,8 +25,6 @@ class MessageSendingController extends Controller
     {
         $ascendants = Ascendant::all();
 
-//        dd($ascendants);
-
         foreach ($ascendants as $ascendant) {
 
             $message = Message::where('ascendant_id', $ascendant->id)
@@ -38,15 +36,15 @@ class MessageSendingController extends Controller
                     ->get();
 
                 if (count($subscribers)) {
-//dd($subscribers);
                     foreach ($subscribers as $subscriber) {
-                        return $this->sendServer($message->message, $subscriber->address);
-//                        $count++;
+                        $this->sendServer($message->message, $subscriber->address);
                     }
                 }
             }
 
         }
+
+        return 'Messages Sent';
     }
 
     public function sendServer($message, $subscriberId)
