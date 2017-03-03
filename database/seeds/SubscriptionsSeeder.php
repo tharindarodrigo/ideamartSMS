@@ -12,9 +12,9 @@ class SubscriptionsSeeder extends Seeder
      */
     public function run()
     {
-        $status = ['SUBSCRIBED', 'UNSUBSCRIBED'];
+        /*$status = ['SUBSCRIBED', 'UNSUBSCRIBED'];
         Subscription::insert([
             ['address'=>str_random(32), 'ascendant_id'=>rand(1,12), 'status'=> $status[rand(0,1)] ]
-        ]);
+        ]);*/
     }
 }
