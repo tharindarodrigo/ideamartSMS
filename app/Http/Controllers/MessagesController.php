@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
@@ -23,7 +24,7 @@ class MessagesController extends Controller
     public function index()
     {
 //        dd('Hi');
-        $messages = Message::where('date','>=', date('Y-m-d'))->get();
+        $messages = Message::where('date', '>=', date('Y-m-d'))->get();
         return view($this->view . 'index', compact('messages'));
     }
 
@@ -52,13 +53,20 @@ class MessagesController extends Controller
         $message->date = $request->date;
         $message->message = $request->message;
 
-        if ($message->save()) {
-            $request->session()->flash('global', ['class' => 'success', 'message' => 'Created Message Successfully!']);
-            return redirect()->route('messages.index');
+        try {
+            if ($message->save()) {
+                $request->session()->flash('global', ['class' => 'success', 'message' => 'Created Message Successfully!']);
+                return redirect()->route('messages.index');
+            }
+
+            $request->session()->flash('global', ['class' => 'danger', 'message' => 'There was an error creating Message']);
+            return redirect()->back();
+
+        } catch (QueryException $e) {
+            $request->session()->flash('global', ['class' => 'danger', 'message' => $e]);
+            return redirect()->back();
         }
 
-        $request->session()->flash('global', ['class' => 'danger', 'message' => 'There was an error creating Message']);
-        return redirect()->back();
 
     }
 
@@ -111,14 +119,21 @@ class MessagesController extends Controller
             $message->date = $request->date;
             $message->message = $request->message;
 
-            if ($message->update()) {
+            try {
+                if ($message->update()) {
 
-                $request->session()->flash('global', ['class' => 'success', 'message' => 'Updated Successfully']);
-                return redirect()->route('messages.index');
+                    $request->session()->flash('global', ['class' => 'success', 'message' => 'Updated Successfully']);
+                    return redirect()->route('messages.index');
+                }
+
+                $request->session()->flash('global', ['class' => 'danger', 'message' => 'There was an error updating Message']);
+                return redirect()->back();
+
+            } catch (QueryException $e) {
+                $request->session()->flash('global', ['class' => 'danger', 'message' => 'Cannot Enter duplicate Entry For same Day']);
+                return redirect()->back();
             }
 
-            $request->session()->flash('global', ['class' => 'danger', 'message' => 'There was an error updating Message']);
-            return redirect()->back();
 
         } catch (ModelNotFoundException $e) {
 

@@ -17,7 +17,7 @@
                 @if(session('global'))
                     <div class="alert alert-{!! session('global')['class'] !!}">
                         <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
-                        {!! session('global')['subscription'] !!}
+                        {!! session('global')['message'] !!}
                     </div>
                 @endif
 

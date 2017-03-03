@@ -21,6 +21,8 @@ class CreateMessagesTable extends Migration
             $table->timestamps();
 
             $table->foreign('ascendant_id')->references('id')->on('ascendants');
+
+            $table->unique(['ascendant_id','date']);
         });
     }
 
