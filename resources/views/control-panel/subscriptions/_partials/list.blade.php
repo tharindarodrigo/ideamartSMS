@@ -2,52 +2,19 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>Date</th>
         <th>Ascendant</th>
-        <th>Subscription</th>
+        <th>Subscriptions</th>
         <th>Controls</th>
     </tr>
     </thead>
     <tbody>
     {{--@if(!empty($subscriptions))--}}
-    @foreach($subscriptions as $subscription)
+    @foreach($ascendants as $ascendant)
         <tr>
-            <td>{!! $subscription->id !!}</td>
-            <td>{!! $subscription->date !!}</td>
-            <td>{!! $subscription->ascendant->name!!}</td>
-            <td>{!! $subscription->subscription !!}</td>
-            <td>
-                <div class="btn-group">
-                    <a class="btn btn-flat btn-sm btn-primary"
-                       href="{{route('subscriptions.edit',[$subscription->id])}}"><span
-                                class="fa fa-edit"></span></a>
-                    <button type="button" data-toggle="modal" data-target="#myModal"
-                            class="btn btn-sm btn-danger btn-icon" onSubmit=""><span class=" fa fa-trash"></span>
+            <td>{!! $ascendant->id !!}</td>
+            <td>{!! $ascendant->name !!}</td>
+            <td>{!! $ascendant->subscription->count()!!}</td>
 
-                    </button>
-
-                    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Delete Subscription</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to Delete Item ?</p>
-                                </div>
-                                {!! Form::open(['route'=>['subscriptions.destroy', $subscription->id], 'method'=>'delete']) !!}
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button class="btn btn-danger">Delete</button>
-                                </div>
-                                {!! Form::close() !!}
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-                </div>
-            </td>
         </tr>
     @endforeach
     {{--@endif--}}
