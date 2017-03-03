@@ -14,16 +14,16 @@ class AscendantSeeder extends Seeder
     {
         Ascendant::insert([
             ['name'=>'Mesha'],
-            ['name'=>'Vushbha'],
+            ['name'=>'Wrushaba'],
             ['name'=>'Mithuna'],
             ['name'=>'Kataka'],
             ['name'=>'Sinha'],
             ['name'=>'Kanya'],
             ['name'=>'Thula'],
-            ['name'=>'Vushchika'],
-            ['name'=>'dhanu'],
+            ['name'=>'Wrushwika'],
+            ['name'=>'Danu'],
             ['name'=>'Makara'],
-            ['name'=>'Kumbha'],
+            ['name'=>'Kumba'],
             ['name'=>'Meena']
         ]);
     }

@@ -38,8 +38,9 @@ class AppRegistrationController extends Controller
             ';
         }
 
-        $msg = "Obage lagnaya palapala danaganimata lagnayata adala ankaya athulu karanna
-        Eg - IT(space) 4 send to 77100 for kataka lagna" .
+        $msg = "Obage lagnayata adala lagna pala​a​pala danagnima sadaha PM (Space) lagnayata adala ankaya athulath kara 77100 ta ewanna.
+        Eg: ​Obage lagnaya sinha nam 
+        PM (Space) 5 type kota 77111 ta ewanna." .
             $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];
