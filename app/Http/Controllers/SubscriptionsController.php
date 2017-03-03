@@ -28,7 +28,7 @@ class SubscriptionsController extends Controller
 
     public function create()
     {
-        $messages = Message::with()->where('date', date('Y-m-d'))->get();
+//        $messages = Message::with()->where('date', date('Y-m-d'))->get();
     }
 
 
