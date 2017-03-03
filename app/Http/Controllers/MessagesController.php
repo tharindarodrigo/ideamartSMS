@@ -63,7 +63,7 @@ class MessagesController extends Controller
             return redirect()->back();
 
         } catch (QueryException $e) {
-            $request->session()->flash('global', ['class' => 'danger', 'message' => $e]);
+            $request->session()->flash('global', ['class' => 'danger', 'message' => 'Cannot Enter duplicate Entry For same Day']);
             return redirect()->back();
         }
 
