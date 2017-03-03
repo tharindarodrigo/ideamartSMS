@@ -35,11 +35,11 @@ class AppRegistrationController extends Controller
         ';
         foreach ($ascendants as $ascendant_id => $ascendant) {
             $ascendantList .= $ascendant_id . '. ' . $ascendant . '
-            ';
+        ';
         }
 
         $msg = "Obage lagnayata adala lagna palaa pala danagnima sadaha PM (Space) lagnayata adala ankaya athulath kara 77111 ta ewanna.
-        Eg: ​Obage lagnaya sinha nam 
+        Eg: Obage lagnaya sinha nam 
         PM (Space) 5 type kota 77111 ta ewanna." .
             $ascendantList;
         //$message = $body['message'];
