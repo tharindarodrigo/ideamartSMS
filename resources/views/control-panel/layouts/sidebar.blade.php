@@ -1,14 +1,14 @@
 <aside class="main-sidebar">
     <section class="sidebar">
-        <div class="user-panel">
+        {{--<div class="user-panel">--}}
 
-            <div class="pull-left info">
-                @if(Auth::check())
-                    <p>{{ Auth::user()->name }}</p>
-                @endif
+            {{--<div class="pull-left info">--}}
+                {{--@if(Auth::check())--}}
+                    {{--<p>{{ Auth::user()->name }}</p>--}}
+                {{--@endif--}}
                 {{--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>--}}
-            </div>
-        </div>
+            {{--</div>--}}
+        {{--</div>--}}
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
@@ -32,11 +32,11 @@
                     <i class="fa fa-envelope"></i><span>Messages</span>
                 </a>
             </li>
-            {{--<li class="treeview @yield('global')">--}}
-                {{--<a href="{!! route('subscriptions.index') !!}">--}}
-                    {{--<i class="fa fa-users"></i><span>Subscriptions</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
+            <li class="treeview @yield('global')">
+                <a href="{!! route('subscriptions.index') !!}">
+                    <i class="fa fa-users"></i><span>Subscriptions</span>
+                </a>
+            </li>
         </ul>
 
     </section>

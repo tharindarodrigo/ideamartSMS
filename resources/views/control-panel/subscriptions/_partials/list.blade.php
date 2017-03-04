@@ -20,8 +20,8 @@
     <tr class="active">
         <td></td>
         <th style="text-align: center">Total</th>
-        <th style="text-align: center">{{\App\Subscription::where('status', 'SUBSCRIBED')->count('id')}}</th>
-        <th style="text-align: center">{{\App\Subscription::where('status', 'UNSUBSCRIBED')->count('id')}}</th>
+        <th style="text-align: center">{{\App\Subscription::where('status', 'SUBSCRIBED')->count()}}</th>
+        <th style="text-align: center">{{\App\Subscription::where('status', 'UNSUBSCRIBED')->count()}}</th>
     </tr>
 
     {{--@endif--}}

@@ -1,11 +1,11 @@
 @extends('control-panel.layouts.app')
 
 @section('page-title')
-    Subscriptions
+    Subscriptions Summary
 @endsection
 
 @section('page-sub-title')
-    List &nbsp; <a href="{!! route('subscriptions.create') !!}" class="btn bg-blue"> <i class="fa fa-plus"></i> Add Subscription</a>
+
 @endsection
 
 @section('content')

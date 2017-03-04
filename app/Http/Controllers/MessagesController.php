@@ -167,4 +167,30 @@ class MessagesController extends Controller
             return redirect()->back();
         }
     }
+
+    public function search(Request $request)
+    {
+        $date = !empty($request->date) ? $request->date : 'any';
+        $ascendant = !empty($request->ascendant_id) ? $request->ascendant_id : 'any';
+
+//        dd($request->all());
+
+        return redirect()->to('messages/search/ascendant/' . $ascendant . '/date/' . $date);
+    }
+
+    public function getMessages($ascendant, $date)
+    {
+        $messages = Message::with('ascendant');
+
+        if ($date != 'any') {
+            $messages->where('date', $date);
+        }
+        if ($ascendant != 'any') {
+            $messages->where('ascendant_id', $ascendant);
+        }
+
+        $messages = $messages->get();
+
+        return view($this->view . 'index', compact('messages', 'ascendant', 'date'));
+    }
 }

@@ -28,9 +28,15 @@ Route::post('/lagna-result','AppRegistrationController@category');
 Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
 Route::resource('messages','MessagesController');
+Route::post('messages/search','MessagesController@search')->name('messages.search');
+Route::get('messages/search/ascendant/{ascendant?}/date/{date?}','MessagesController@getMessages');
 Route::resource('subscriptions','SubscriptionsController');
 Route::get('send-message','MessageSendingController@sendMessages');
 
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
