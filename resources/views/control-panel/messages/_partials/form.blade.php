@@ -5,7 +5,7 @@
 </div>
 <div class="form-group {{$errors->first('date') ? 'has-error' : ''}}">
     <label for="name">Date </label>
-    {!! Form::input('date', 'date', null,['class'=>'form-control']) !!}
+    {!! Form::text('date', null,['class'=>'form-control', 'id'=>'datepicker']) !!}
     <span class="help-block">{{$errors->first('date', ':message')}}</span>
 </div>
 <div class="form-group {{$errors->first('message') ? 'has-error' : ''}}">

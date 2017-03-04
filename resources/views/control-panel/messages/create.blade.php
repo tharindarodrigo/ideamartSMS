@@ -8,6 +8,11 @@
     List &nbsp; <a href="{!! route('messages.create') !!}" class="btn bg-blue"> <i class="fa fa-plus"></i> Add Message</a>
 @endsection
 
+@push('styles')
+<link rel="stylesheet" href="{{asset('control-panel/plugins/datepicker/datepicker3.css')}}">
+@endpush
+
+
 @section('content')
 
     <div class="row">
@@ -34,3 +39,17 @@
     </div>
 
 @endsection
+
+@push('scripts')
+
+<script type="text/javascript"
+        src="{{asset('control-panel/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<script>
+    $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+    });
+
+</script>
+
+@endpush

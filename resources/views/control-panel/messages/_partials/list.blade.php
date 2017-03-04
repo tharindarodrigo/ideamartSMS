@@ -21,12 +21,12 @@
                     <a class="btn btn-flat btn-sm btn-primary"
                        href="{{route('messages.edit',[$message->id])}}"><span
                                 class="fa fa-edit"></span></a>
-                    <button type="button" data-toggle="modal" data-target="#myModal"
+                    <button type="button" data-toggle="modal" data-target="#myModal{{$message->id}}"
                             class="btn btn-sm btn-danger btn-icon" onSubmit=""><span class=" fa fa-trash"></span>
 
                     </button>
 
-                    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+                    <div class="modal fade" tabindex="-1" role="dialog" id="myModal{{$message->id}}">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -43,9 +43,9 @@
                                     <button class="btn btn-danger">Delete</button>
                                 </div>
                                 {!! Form::close() !!}
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </td>
         </tr>
