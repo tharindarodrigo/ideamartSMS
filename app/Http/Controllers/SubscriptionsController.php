@@ -31,6 +31,8 @@ class SubscriptionsController extends Controller
 
     public function create()
     {
+        $subscriptions = Subscription::all();
+        return $subscriptions;
 //        $messages = Message::with()->where('date', date('Y-m-d'))->get();
     }
 
