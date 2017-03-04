@@ -66,8 +66,6 @@ class MessagesController extends Controller
             $request->session()->flash('global', ['class' => 'danger', 'message' => 'Cannot Enter duplicate Entry For same Day']);
             return redirect()->back();
         }
-
-
     }
 
     /**

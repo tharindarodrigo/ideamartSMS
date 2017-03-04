@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ascendant;
 use App\Message;
 use App\Subscription;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ class SubscriptionsController extends Controller
 
     public function index()
     {
+        $ascendants = Ascendant::with('subscriptions')->get();
+        return view('control-panel.subscriptions.index', compact('ascendants'));
         $subscriptions = Subscription::all();
         return $subscriptions;
     }
