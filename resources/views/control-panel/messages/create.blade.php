@@ -17,7 +17,7 @@
 
     <div class="row">
 
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="panel">
                 @if(session('global'))
                     <div class="alert alert-{!! session('global')['class'] !!}">

@@ -13,15 +13,15 @@
         <tr>
             <td>{!! $ascendant->id !!}</td>
             <td>{!! $ascendant->name !!}</td>
-            <td style="text-align: center">{!! $ascendant->subscriptions->where('status','SUBSCRIBED')->count()!!}</td>
-            <td style="text-align: center">{!! $ascendant->subscriptions->where('status','UNSUBSCRIBED')->count()!!}</td>
+            <td style="text-align: center">{!! $ascendant->subscriptions->where('status','REGISTERED')->count()!!}</td>
+            <td style="text-align: center">{!! $ascendant->subscriptions->where('status','UNREGISTERED')->count()!!}</td>
         </tr>
     @endforeach
     <tr class="active">
         <td></td>
         <th style="text-align: center">Total</th>
-        <th style="text-align: center">{{\App\Subscription::where('status', 'SUBSCRIBED')->count()}}</th>
-        <th style="text-align: center">{{\App\Subscription::where('status', 'UNSUBSCRIBED')->count()}}</th>
+        <th style="text-align: center">{{\App\Subscription::where('status', 'REGISTERED')->count()}}</th>
+        <th style="text-align: center">{{\App\Subscription::where('status', 'UNREGISTERED')->count()}}</th>
     </tr>
 
     {{--@endif--}}
