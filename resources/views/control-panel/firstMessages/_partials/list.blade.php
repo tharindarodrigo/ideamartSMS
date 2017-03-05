@@ -14,7 +14,7 @@
             <td>{!! $message->id !!}</td>
             <td>{!! $message->ascendant->name!!}</td>
             <td>{!! $message->message !!}</td>
-            <td>
+            <td style="width:85px;">
                 <div class="btn-group">
                     <a class="btn btn-flat btn-sm btn-primary"
                        href="{{route('first-messages.edit',[$message->id])}}"><span
