@@ -24,7 +24,7 @@ class MessageSendingController extends Controller
     public function sendMessages()
     {
         $ascendants = Ascendant::all();
-        $datetime = new DateTime('tomorrow');
+        $datetime = new \DateTime('tomorrow');
         $date = $datetime->format('Y-m-d');
 
         foreach ($ascendants as $ascendant) {
@@ -93,7 +93,8 @@ class MessageSendingController extends Controller
 
     public function deleteMessages($date)
     {
-        $messages =Message::where('date', $date)->pluck('id');
+        $messages =Message::where('date', $date)->pluck('id')->toArray();
+//        dd($messages);
         if (Message::destroy($messages)) {
             return 'deleted successfully';
         }
