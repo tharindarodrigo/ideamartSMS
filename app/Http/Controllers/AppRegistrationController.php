@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ascendant;
+use App\FirstMessage;
 use App\Subscription;
 use Illuminate\Http\Request;
 
@@ -93,7 +94,10 @@ PM (Space) 5 type kara 77111 ta ewanna." .
 //        $subscription->ascendant_id = $split[1];
 //        $res = 'You have registered for '. Ascendant::findOrFail($subscription->ascendant_id )->name;
 
-        return $this->sendServer($res, $sourceAddress);
+        $this->sendServer($res, $sourceAddress);
+
+        $firstMessage = FirstMessage::where('ascendant_id',$subscription->ascendant_id)->first();
+        $this->sendServer($firstMessage->message, $sourceAddress);
     }
 
     public function category(Request $request)

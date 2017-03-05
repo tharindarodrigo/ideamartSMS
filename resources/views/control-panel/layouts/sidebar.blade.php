@@ -37,6 +37,11 @@
                     <i class="fa fa-users"></i><span>Subscriptions</span>
                 </a>
             </li>
+            <li class="treeview @yield('global')">
+                <a href="{!! route('first-messages.index') !!}">
+                    <i class="fa fa-circle-o"></i><span>First Messages</span>
+                </a>
+            </li>
         </ul>
 
     </section>

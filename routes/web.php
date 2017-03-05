@@ -28,6 +28,7 @@ Route::post('/lagna-result','AppRegistrationController@category');
 Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
 Route::resource('messages','MessagesController');
+Route::resource('first-messages','FirstMessagesController');
 Route::post('messages/search','MessagesController@search')->name('messages.search');
 Route::get('messages/search/ascendant/{ascendant?}/date/{date?}','MessagesController@getMessages');
 Route::resource('subscriptions','SubscriptionsController');
