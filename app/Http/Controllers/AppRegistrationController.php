@@ -41,7 +41,7 @@ class AppRegistrationController extends Controller
 
     $msg = "Obage lagnayata adala lagna palaa pala danagnima sadaha PM (Space) lagnayata adala ankaya athulath kara 77111 ta ewanna.
 Eg: Obage lagnaya sinha nam 
-PM (Space) 5 type kara 77111 ta ewanna." .
+PM (Space) 5 lesa type kara 77111 ta ewanna." .
             $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];
