@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 //error_reporting(E_ALL);
 //ini_set('error_log', 'sms.log');
 
-define('APP_ID', 'APP_033669');
-define('APP_PASSWORD', '4b4aad35a36ebb34b8ce6f6a2409d70d');
+define('APP_ID', 'APP_034129');
+define('APP_PASSWORD', '55df366779d42fda970e838ace3e749d');
 define('SERVER_URL', 'https://api.dialog.lk/sms/send');
 //include_once 'app/lib/SMSReceiver.php';
 //require_once 'app/lib/SMSSender.php';
@@ -40,7 +40,7 @@ class AppRegistrationController extends Controller
 
     $msg = "Obage lagnayata adala lagna palaa pala danagnima sadaha PM (Space) lagnayata adala ankaya athulath kara 77111 ta ewanna.
 Eg: Obage lagnaya sinha nam 
-PM (Space) 5 type kota 77111 ta ewanna." .
+PM (Space) 5 type kara 77111 ta ewanna." .
             $ascendantList;
         //$message = $body['message'];
         $version = $body['version'];

@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 //error_reporting(E_ALL);
 //ini_set('error_log', 'sms.log');
 
-define('APP_ID', 'APP_033669');
-define('APP_PASSWORD', '4b4aad35a36ebb34b8ce6f6a2409d70d');
+define('APP_ID', 'APP_034129');
+define('APP_PASSWORD', '55df366779d42fda970e838ace3e749d');
 define('SERVER_URL', 'https://api.dialog.lk/sms/send');
 
 class MessageSendingController extends Controller
@@ -24,11 +24,13 @@ class MessageSendingController extends Controller
     public function sendMessages()
     {
         $ascendants = Ascendant::all();
+        $datetime = new DateTime('tomorrow');
+        $date = $datetime->format('Y-m-d');
 
         foreach ($ascendants as $ascendant) {
 
             $message = Message::where('ascendant_id', $ascendant->id)
-                ->where('date', date('Y-m-d'))->first();
+                ->where('date', $date)->first();
             if (count($message)) {
 
                 $subscribers = Subscription::where('ascendant_id', $ascendant->id)
@@ -43,6 +45,8 @@ class MessageSendingController extends Controller
             }
 
         }
+
+        $this->deleteMessages(date('Y-m-d'));
 
         return 'Messages Sent';
     }
@@ -85,5 +89,14 @@ class MessageSendingController extends Controller
         curl_close($ch);
         return $res;
         //var_dump(return $this->handleResponse($res));
+    }
+
+    public function deleteMessages($date)
+    {
+        $messages =Message::where('date', $date)->pluck('id');
+        if (Message::destroy($messages)) {
+            return 'deleted successfully';
+        }
+        return 'deletion failed';
     }
 }
