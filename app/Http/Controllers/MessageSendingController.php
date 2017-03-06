@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ascendant;
 use App\Message;
 use App\Subscription;
+use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Http\Request;
 
 
@@ -24,7 +25,7 @@ class MessageSendingController extends Controller
     public function sendMessages()
     {
         $ascendants = Ascendant::all();
-        $datetime = new \DateTime('tomorrow');
+        $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d');
 
         foreach ($ascendants as $ascendant) {
@@ -46,7 +47,9 @@ class MessageSendingController extends Controller
 
         }
 
-        $this->deleteMessages(date('Y-m-d'));
+        $yesterday = new \DateTime('Yesterday');
+        $datesToDelete = $yesterday->format('Y-m-d');
+        $this->deleteMessages($datesToDelete);
 
         return 'Messages Sent';
     }
