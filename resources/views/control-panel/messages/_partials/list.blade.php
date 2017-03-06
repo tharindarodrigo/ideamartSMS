@@ -13,7 +13,7 @@
     @foreach($messages as $message)
         <tr>
             <td>{!! $message->id !!}</td>
-            <td style="width: 120px;">{!! $message->date !!}</td>
+            <td style="width: 110px;">{!! $message->date !!}</td>
             <td>{!! $message->ascendant->name!!}</td>
             <td>{!! $message->message !!}</td>
             <td style="width: 85px;">
