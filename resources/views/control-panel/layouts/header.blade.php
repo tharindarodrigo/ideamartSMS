@@ -1,5 +1,5 @@
 <header class="main-header">
-    <a href="../../index2.html" class="logo">
+    <a href="#" class="logo">
         <span class="logo-mini"><b>A</b>P</span>
         <span class="logo-lg"><b>Admin</b>Panel</span>
     </a>
@@ -11,12 +11,33 @@
             <span class="icon-bar"></span>
         </a>
 
-        {{--<div class="navbar-custom-menu">--}}
-            {{--<ul class="nav navbar-nav">--}}
-                {{--<li>--}}
-                    {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-        {{--</div>--}}
+        {{--<ul class="dropdown-menu" role="menu">--}}
+            {{--<li>--}}
+                {{--<a href="{{ route('logout') }}"--}}
+                   {{--onclick="event.preventDefault();--}}
+                                                     {{--document.getElementById('logout-form').submit();">--}}
+                    {{--Logout--}}
+                {{--</a>--}}
+
+                {{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+                    {{--{{ csrf_field() }}--}}
+                {{--</form>--}}
+            {{--</li>--}}
+        {{--</ul>--}}
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
