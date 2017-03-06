@@ -85,7 +85,7 @@
                 <div class="links">
                     <a href="{{route('messages.index')}}">Messages</a>
                     <a href="{{route('subscriptions.index')}}">Subscriptions</a>
-                    <a href="">{{date('Y-m-d H:i:s')}}</a>
+{{--                    <a href="">{{date('Y-m-d')}}</a>--}}
                 </div>
             </div>
         </div>
