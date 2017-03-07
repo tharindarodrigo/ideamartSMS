@@ -25,8 +25,7 @@ class MessageSendingController extends Controller
     public function sendMessages()
     {
         $ascendants = Ascendant::all();
-        $datetime = new \DateTime();
-        $date = $datetime->format('Y-m-d');
+        $date = date('Y-m-d');
 
         foreach ($ascendants as $ascendant) {
 
