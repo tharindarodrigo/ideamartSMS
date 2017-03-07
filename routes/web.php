@@ -24,9 +24,6 @@ Route::get('/', function () {
 //});
 
 Route::group(['middleware'=>'auth'], function(){
-    Route::post('/register-user','AppRegistrationController@register');
-    Route::post('/lagna-result','AppRegistrationController@category');
-    Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
     Route::resource('messages','MessagesController');
     Route::resource('first-messages','FirstMessagesController');
@@ -37,7 +34,8 @@ Route::group(['middleware'=>'auth'], function(){
 
 Route::get('send-message','MessageSendingController@sendMessages');
 
-
+Route::post('/register-user','AppRegistrationController@register');
+Route::post('/set-ascendant','AppRegistrationController@setAscendant');
 
 Auth::routes();
 
