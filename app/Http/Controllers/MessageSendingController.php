@@ -8,7 +8,6 @@ use App\Subscription;
 use Faker\Provider\cs_CZ\DateTime;
 use Illuminate\Http\Request;
 
-
 //date_default_timezone_set('Asia/Colombo');
 //ini_set('display_errors', 1);
 //ini_set('display_errors', 1);
